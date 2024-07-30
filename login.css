@@ -1,0 +1,112 @@
+@-webkit-keyframes Smart-animate {
+  0% {
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes Smart-animate {
+  0% {
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+* {
+  caret-color: #fff;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+.input-control {
+  padding-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 10px;
+  position: relative;
+  padding-bottom: 10px;
+  margin: 5px;
+}
+
+.input-control input {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(26, 83, 25);
+}
+
+.input-control label {
+  color: #fff;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  position: absolute;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.input-control input:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+.error {
+  font-size: 10px;
+  color: red;
+}
+
+.scroll-scale {
+  opacity: 1;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+.scroll-bottom {
+  opacity: 0;
+  -webkit-transform: translateY(300px);
+          transform: translateY(300px);
+  -webkit-transition: 3s;
+  transition: 3s;
+}
+
+.scroll-top {
+  opacity: 0;
+  -webkit-transform: translateY(-300px);
+          transform: translateY(-300px);
+  -webkit-transition: all 3s;
+  transition: all 3s;
+}
+
+.scroll-left {
+  opacity: 0;
+  -webkit-transform: translateX(300px);
+          transform: translateX(300px);
+  -webkit-transition: all 3s;
+  transition: all 3s;
+}
+
+.scroll-right {
+  opacity: 1;
+  -webkit-transform: translateX(-300px);
+          transform: translateX(-300px);
+  -webkit-transition: all 3s;
+  transition: all 3s;
+}
+
+.show-items {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
