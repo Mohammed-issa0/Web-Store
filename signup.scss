@@ -60,10 +60,7 @@ header .logo {
 .home .right {
     width: 633px;
     height: 436px;
-    top: 267px;
-    left: 551px;
     border-radius: 55px;
-    border: 1px 0px 0px 0px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(241, 241, 241, 0.48);
     box-shadow: -47.43px 47.43px 47.43px 0px rgba(255, 255, 255, 0.1) inset;
@@ -120,6 +117,7 @@ form {
     border: none;
     background-color: transparent;
     border-bottom: 1px solid rgba(26, 83, 25, 1);
+    color: #fff;
 }
 
 .input-control label {
@@ -139,22 +137,26 @@ form {
 }
 
 .home .right button {
+    background: rgba(124, 135, 97, 0.67);
+    color: rgba(255, 255, 255, 1);
     width: 65%;
     height: 40px;
     margin-top: 10px;
-    // padding: 10px 116px 0px 113px;
-    border-radius: 45px;
     border: 1px solid rgba(252, 252, 252, 1);
-    background: rgba(124, 135, 97, 0.67);
-    cursor: pointer;
+    border-radius: 45px;
     font-size: 20px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 1);
     line-height: 40px;
     display: flex;
     justify-content: center;
     align-self: center;
+    cursor: pointer;
+    transition: .3s;
 }
+
+    .btn:hover {
+        background-color: rgba(171, 184, 138, 0.705);
+    }
 
 h5 {
     margin-top: 20px;
@@ -202,4 +204,72 @@ h5 a {
 .show-items {
     opacity: 1;
     transform: translateX(0);
+}
+
+@media (max-width: 767px) {
+        .home{
+            flex-direction: column-reverse;
+        }
+        .home .left {
+            width: 300px;
+            height: 292px;
+            margin: -80px auto;
+        }
+        .home .right {
+            width: 120%;
+            height: auto;
+        }
+        .home .right h1 {
+            font-family: Poppins;
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 85%;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        .right img{
+                width: 80px;
+        }
+        .input-control {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .home .right button {
+            width: 65%;
+            height: 40px;
+            margin-top: 5px;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 40px;
+        }
+        h5 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: 300;
+            color: rgba(214, 239, 216, 1);
+        }
+
+        h5 a {
+            text-decoration: none;
+            color: rgba(26, 83, 25, 1);
+            font-weight: 900;
+        }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .home {
+        flex-direction: column-reverse;
+        }
+
+    .home .left {
+        width: 400px;
+        height: 392px;
+        margin: -80px auto;
+        }
 }
