@@ -177,18 +177,6 @@ h5 a {
     transition: all 2s;
 }
 
-.scroll-bottom {
-    opacity: 0;
-    transform: translateY(300px);
-    transition: 3s;
-}
-
-.scroll-top {
-    opacity: 0;
-    transform: translateY(-300px);
-    transition: all 3s;
-}
-
 .scroll-left {
     opacity: 0;
     transform: translateX(300px);
@@ -198,6 +186,17 @@ h5 a {
 .scroll-right {
     opacity: 1;
     transform: translateX(-300px);
+    transition: all 3s;
+}
+.scroll-bottom {
+    opacity: 0;
+    transform: translateY(300px);
+    transition: 3s;
+}
+
+.scroll-top {
+    opacity: 0;
+    transform: translateY(-300px);
     transition: all 3s;
 }
 

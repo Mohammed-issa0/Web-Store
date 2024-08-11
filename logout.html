@@ -1,36 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="logout.css">
+    <link rel="stylesheet" href="logout.css" />
     <title>login-page</title>
-</head>
+    <style>
+      a {
+        color: #fff;
+      }
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header #language-select {
+        color: #508d4e;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+      }
+      header #language-select:focus {
+        outline: none;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <span id="save-ar"></span>
     <div class="container">
-        <header>
-            <div class="logo"><img src="/images/logo.png" alt=""></div>
-        </header>
+      <header>
+        <div class="logo"><img src="/images/logo.png" alt="" /></div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+          Mode
+        </button>
+        <select id="language-select">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ar">عربي</option>
+        </select>
+      </header>
 
-        <section class="home">
-            <div class="right scroll-left">
-                <input type="submit" value="logout" class="btn">
-                 <h1>Welcome to our store</h1>     
-              
-                <div class="images">
-                    <img src="/images/pexels-rafa-de-21730-97260-removebg-preview 1.png" alt="" width="200px" height="auto" class="img3">
-                    <img src="/images/pexels-nietjuh-1445416-removebg-preview 1.png" alt="" width="200px" height="auto" class="img2">
-                    <img src="/images/StockSnap_JETTZWAHZV-scaled-e1706548925972-768x853.png" alt="" width="180px" height="auto" class="img1">
-                </div>
+      <section class="home">
+        <div class="right scroll-left">
+          <button class="btn" data-lang="logout">Logout</button>
+          <h1 data-lang="welcome">Welcome to our store</h1>
 
-            </div>
-            
-        </section>
+          <div class="images">
+            <img
+              src="/images/pexels-rafa-de-21730-97260-removebg-preview 1.png"
+              alt=""
+              width="200px"
+              height="auto"
+              class="img3"
+            />
+            <img
+              src="/images/pexels-nietjuh-1445416-removebg-preview 1.png"
+              alt=""
+              width="200px"
+              height="auto"
+              class="img2"
+            />
+            <img
+              src="/images/StockSnap_JETTZWAHZV-scaled-e1706548925972-768x853.png"
+              alt=""
+              width="180px"
+              height="auto"
+              class="img1"
+            />
+          </div>
+        </div>
+      </section>
     </div>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>

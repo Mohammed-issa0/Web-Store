@@ -1,173 +1,236 @@
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show-items")
-        }else{
-            entry.target.classList.remove("show-items")
-        }
-    });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show-items");
+    } else {
+      entry.target.classList.remove("show-items");
+    }
+  });
 });
 
 const scrollScale = document.querySelectorAll(".scroll-scale");
-scrollScale.forEach((el)=>observer.observe(el));
+scrollScale.forEach((el) => observer.observe(el));
 
 const scrollBottom = document.querySelectorAll(".scroll-bottom");
-scrollBottom.forEach((el)=>observer.observe(el));
+scrollBottom.forEach((el) => observer.observe(el));
 
 const scrollTop = document.querySelectorAll(".scroll-top");
-scrollTop.forEach((el)=>observer.observe(el));
+scrollTop.forEach((el) => observer.observe(el));
 
 const scrollright = document.querySelectorAll(".scroll-right");
-scrollright.forEach((el)=>observer.observe(el));
+scrollright.forEach((el) => observer.observe(el));
 
 const scrollleft = document.querySelectorAll(".scroll-left");
-scrollleft.forEach((el)=>observer.observe(el));
+scrollleft.forEach((el) => observer.observe(el));
 
 // -----------------------------------------------------------------------
-const inputs = document.querySelectorAll('input');
-        
-        inputs.forEach(input => {
-            const label = input.previousElementSibling;
+const inputs = document.querySelectorAll("input");
 
-            input.addEventListener('focus', () => {
-                label.style.transform = 'translateY(-25px)';
-                label.style.transition = 'transform 0.3s ease';
-            });
+inputs.forEach((input) => {
+  const label = input.previousElementSibling;
 
-            input.addEventListener('blur', () => {
-                if (input.value === '') {
-                    label.style.transform = 'translateY(-8px)';
-                }
-            });
-        });
+  input.addEventListener("focus", () => {
+    label.style.transform = "translateY(-25px)";
+    label.style.transition = "transform 0.3s ease";
+  });
 
+  input.addEventListener("blur", () => {
+    if (input.value === "") {
+      label.style.transform = "translateY(-8px)";
+    }
+  });
+});
 
-// --------------------------------------------------------------------------------------
+let stat = true;
+let kind;
 
-// const form = document.getElementById('form');
-// const username = document.getElementById('username');
-// const email = document.getElementById('email');
-// const number = document.getElementById('number');
-// const password = document.getElementById('password');
-// const password2 = document.getElementById('password2');
+function status(lang) {
+  kind = lang;
+  let span = document.getElementById("save-ar");
+  span.classList.add("save-ar");
+  let div = document.createElement("div");
+  div.classList.add("save-area");
+  let text = document.createTextNode("Do you want to save language?");
+  // text.classList.add("text1");
+  div.appendChild(text);
+  span.appendChild(div);
+  let btns = document.createElement("div");
+  btns.classList.add("btns");
+  let fbtn = document.createTextNode("Yes");
+  let sbtn = document.createTextNode("NO");
+  let divfbtn = document.createElement("div");
+  divfbtn.classList.add("fbtn");
+  divfbtn.appendChild(fbtn);
+  let divsbtn = document.createElement("div");
+  divsbtn.classList.add("sbtn");
+  divsbtn.appendChild(sbtn);
 
-// form.addEventListener('submit', e => {
-//     e.preventDefault();
+  btns.appendChild(divfbtn);
+  btns.appendChild(divsbtn);
+  div.appendChild(btns);
 
-//     validateInputs();
-// });
+  divfbtn.onclick = function () {
+    document.querySelector(".save-area").remove();
+    // document.querySelector(".save-ar::before").remove();
+    stat = true;
+    console.log(stat);
+    localStorage.setItem("lang", lang);
+  };
+  divsbtn.onclick = function () {
+    document.querySelector(".save-area").remove();
+    // document.querySelector(".save-ar::before").remove();
+    stat = false;
+    console.log(stat);
+    localStorage.removeItem("lang");
+  };
+}
 
-// const setError = (element, message) => {
-//     const inputControl = element.parentElement;
-//     const errorDisplay = inputControl.querySelector('.error');
+document
+  .getElementById("language-select")
+  .addEventListener("change", function () {
+    const lang = this.value;
+    setLanguage(lang);
+    languagee = lang;
+    status(lang);
+  });
 
-//     errorDisplay.innerText = message;
-//     inputControl.classList.add('error');
-//     inputControl.classList.remove('success')
-// }
+function setLanguage(lang) {
+  const elements = document.querySelectorAll("[data-lang]");
+  elements.forEach((el) => {
+    el.textContent = translations[lang][el.getAttribute("data-lang")];
+  });
+  if (lang == "ar") {
+    document.querySelector(".right").style.direction = "rtl";
+    localStorage.setItem("lang", "ar");
+  } else {
+    document.querySelector(".right").style.direction = "ltr";
+  }
+}
 
-// const setSuccess = element => {
-//     const inputControl = element.parentElement;
-//     const errorDisplay = inputControl.querySelector('.error');
+const translations = {
+  en: {
+    signup: "Signup",
+    userName: "User Name",
+    phoneNumber: "Phone Number",
+    email: "Email",
+    password: "Password",
+    rePassword: "Re Password",
+    uploadCertificate: "Upload Certificate",
+    haveAccount: "Have an account?",
+    login: "login",
+    a: "INTER CODE",
+    b: "The verification code has been sent to your email",
+    c: "The code consists of 6 digits containing letters and numbers and is valid for 10 minutes.",
+    verify: "Verify",
+    welcome: "Welcome to our store",
+    logout: "Logout",
+    forget: "Forget Password",
+    dont: "don't have an account?",
+    have: "Have an account?",
+  },
+  fr: {
+    signup: "S'inscrire",
+    userName: "Nom d'utilisateur",
+    phoneNumber: "Numéro de téléphone",
+    email: "Email",
+    password: "Mot de passe",
+    rePassword: "Confirmer le mot de passe",
+    uploadCertificate: "Télécharger le certificat",
+    haveAccount: "Vous avez un compte?",
+    login: "connexion",
+    welcome: "Bienvenue dans notre magasin",
+    logout: "Se déconnecter",
+    forget: "Forget Password",
+    dont: "don't have an account?",
+    have: "Have an account?",
+  },
+  de: {
+    signup: "Anmelden",
+    userName: "Benutzername",
+    phoneNumber: "Telefonnummer",
+    email: "Email",
+    password: "Passwort",
+    rePassword: "Passwort bestätigen",
+    uploadCertificate: "Zertifikat hochladen",
+    haveAccount: "Haben Sie ein Konto?",
+    login: "einloggen",
+    welcome: "Willkommen in unserem Geschäft",
+    logout: "Ausloggen",
+    forget: "Forget Password",
+    dont: "don't have an account?",
+    have: "Have an account?",
+  },
+  ar: {
+    signup: "إنشاء حساب",
+    login: "سجل الدخول",
+    userName: "اسم المستخدم",
+    phoneNumber: "رقم الهاتف",
+    email: "الإيميل",
+    password: "كلمة السر",
+    rePassword: "إعادة كلمة السر",
+    uploadCertificate: "تحميل شهادة",
+    haveAccount: "هل لديك حساب؟",
+    login: "سجل الدخول",
+    a: "ادخل الكود",
+    b: "تم ارسال رمز التحقق لبريدك الالكتروني",
+    c: "الكود يحتوي على 6 حروف و صالح لمدة عشر دقائق",
+    verify: "تحقق",
+    welcome: "اهلا بك في متجرنا",
+    logout: "تسجيل حروج",
+    forget: "نسيت كلمة السر",
+    dont: "ليس لديك حساب؟",
+    have: "هل لديك حساب؟",
+  },
+};
 
-//     errorDisplay.innerText = '';
-//     inputControl.classList.add('success');
-//     inputControl.classList.remove('error');
-// };
+setLanguage(localStorage.getItem("lang"));
 
-// const isValidEmail = email => {
-//     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(String(email).toLowerCase());
-// }
+function mode() {
+  let span = document.getElementById("save-ar");
+  span.classList.add("save-ar");
+  let div = document.createElement("div");
+  div.classList.add("save-area");
+  let text = document.createTextNode("Do you want to save The Mode?");
+  // text.classList.add("text1");
+  div.appendChild(text);
+  span.appendChild(div);
+  let btns = document.createElement("div");
+  btns.classList.add("btns");
+  let fbtn = document.createTextNode("Yes");
+  let sbtn = document.createTextNode("NO");
+  let divfbtn = document.createElement("div");
+  divfbtn.classList.add("fbtn");
+  divfbtn.appendChild(fbtn);
+  let divsbtn = document.createElement("div");
+  divsbtn.classList.add("sbtn");
+  divsbtn.appendChild(sbtn);
 
-// const isValidNumber = number => {
-//     const re = /\d{10}/;
-//     return re.test(number);
-// }
+  btns.appendChild(divfbtn);
+  btns.appendChild(divsbtn);
+  div.appendChild(btns);
 
-// function readOnly(e) {
-//       e.setAttribute('readonly', true);
-//     }
-
-// const validateInputs = () => {
-//     const usernameValue = username.value.trim();
-//     const emailValue = email.value.trim();
-//     const numberValue = number.value.trim();
-//     const passwordValue = password.value.trim();
-//     const password2Value = password2.value.trim();
-
-//     if(usernameValue === '') {
-//         setError(username, 'Username is required'); 
-//     } else {
-//         setSuccess(username);
-//         // readOnly(username);
-//     }
-    
-
-//     if(emailValue === '') {
-//         setError(email, 'Email is required');
-//     } else if (!isValidEmail(emailValue)) {
-//         setError(email, 'Provide a valid email address');
-//     } else {
-//         setSuccess(email);
-//         // readOnly(email);
-//     }
-    
-
-//     if(numberValue === '') {
-//         setError(number, 'Number is required');
-//     } else if (!isValidNumber(numberValue)) {
-//         setError(number, 'The number should be 10 digits!');
-//     } else {
-//         setSuccess(number);
-//         // readOnly(number);
-//     }
-    
-
-//     if (numberValue.length > 10) {
-//         numberValue = numberValue.slice(0, 10);
-//     }
-
-//     if(passwordValue === '') {
-//         setError(password, 'Password is required');
-//     } else if (passwordValue.length < 8 ) {
-//         setError(password, 'Password must be at least 8 character.')
-//     } else {
-//         setSuccess(password);
-//         // readOnly(password);
-//     }
-    
-
-//     if(password2Value === '') {
-//         setError(password2, 'Please confirm your password');
-//     } else if (password2Value !== passwordValue) {
-//         setError(password2, "Passwords doesn't match");
-//     } else {
-//         setSuccess(password2);
-//         // readOnly(password2);
-//     }
-
-    
-    
-// };
-
-//         const togglePassword = document.querySelector('#togglePassword');
-//         const togglePassword2 = document.querySelector('#togglePassword2');
-
-//         togglePassword.addEventListener('click', function () {
-//             // Toggle the type attribute
-//             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-//             password.setAttribute('type', type);
-//             // Toggle the icon
-//             this.classList.toggle('bx-show');
-//             this.classList.toggle('bx-hide');
-//         });
-        
-//         togglePassword2.addEventListener('click', function () {
-//             // Toggle the type attribute
-//             const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
-//             password2.setAttribute('type', type);
-//             // Toggle the icon
-//             this.classList.toggle('bx-show');
-//             this.classList.toggle('bx-hide');
-//         });
+  divfbtn.onclick = function () {
+    document.querySelector(".save-area").remove();
+    // document.querySelector(".save-ar::before").remove();
+    stat = true;
+    console.log(stat);
+    localStorage.setItem("mode", "dark-mode");
+  };
+  divsbtn.onclick = function () {
+    document.querySelector(".save-area").remove();
+    // document.querySelector(".save-ar::before").remove();
+    stat = false;
+    console.log(stat);
+    localStorage.removeItem("mode");
+  };
+}
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  mode();
+}
+if (localStorage.getItem("mode") != null) {
+  document.body.classList.add("dark-mode");
+} else {
+  document.body.classList.remove("dark-mode");
+}
+console.log(kind);

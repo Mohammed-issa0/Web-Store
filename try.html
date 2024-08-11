@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signup.css" />
+    <title>Signup</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          108.81deg,
+          #7c8761 -21.51%,
+          #80af81 36.42%,
+          rgba(26, 83, 25, 0.9) 87.8%
+        );
+        overflow: hidden;
+        transition: background 0.3s;
+      }
+
+      body.dark-mode {
+        background: linear-gradient(
+          108.81deg,
+          #2c2c2c -21.51%,
+          #1f1f1f 36.42%,
+          #141414 87.8%
+        );
+        color: #fff;
+      }
+
+      .container {
+        width: 80%;
+        height: 100vh;
+        margin: 0 auto;
+      }
+
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .logo {
+        display: block;
+        width: 96px;
+        height: 72px;
+        padding: 10px 0 0 10px;
+      }
+
+      .dark-mode .logo img {
+        filter: invert(1);
+      }
+
+      .toggle-dark-mode {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #fff;
+        padding: 10px;
+      }
+
+      .home {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .home .left {
+        width: 372px;
+        height: 366px;
+        z-index: 1;
+        margin-right: -60px;
+      }
+
+      .home .left img {
+        width: 100%;
+        height: 100%;
+        border-radius: 55px;
+      }
+
+      .home .right {
+        width: 633px;
+        height: 436px;
+        border-radius: 55px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(241, 241, 241, 0.48);
+        box-shadow: -47.43px 47.43px 47.43px 0px rgba(255, 255, 255, 0.1) inset,
+          47.43px -47.43px 47.43px 0px rgba(194, 194, 194, 0.1) inset;
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+        transition: background 0.3s, border 0.3s;
+      }
+
+      .dark-mode .right {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(100, 100, 100, 0.48);
+        color: #fff;
+      }
+
+      .home .right h1 {
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 54px;
+        text-align: center;
+        text-transform: uppercase;
+        background: linear-gradient(180deg, #508d4e -14.81%, #161313 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .dark-mode .right h1 {
+        background: linear-gradient(180deg, #bb86fc -14.81%, #3700b3 100%);
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        width: 65%;
+        margin: 0 auto;
+        gap: 20px;
+      }
+
+      .input-control {
+        padding-top: 10px;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .input-control input {
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid rgb(26, 83, 25);
+        color: #fff;
+      }
+
+      .dark-mode .input-control input {
+        border-bottom: 1px solid #bb86fc;
+      }
+
+      .input-control label {
+        color: rgb(214, 239, 216);
+        transform: translateY(-8px);
+        position: absolute;
+        transition: 0.3s;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 30px;
+        text-align: left;
+      }
+
+      .input-control input:focus {
+        outline: none;
+      }
+
+      .home .right button {
+        background: rgba(124, 135, 97, 0.67);
+        color: rgb(255, 255, 255);
+        width: 65%;
+        height: 40px;
+        margin-top: 10px;
+        border: 1px solid rgb(252, 252, 252);
+        border-radius: 45px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .dark-mode .home .right button {
+        background: rgba(58, 58, 58, 0.67);
+        border: 1px solid #bb86fc;
+      }
+
+      .btn:hover {
+        background-color: rgba(171, 184, 138, 0.705);
+      }
+
+      .dark-mode .btn:hover {
+        background-color: rgba(88, 88, 88, 0.705);
+      }
+
+      h5 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-weight: 300;
+        color: rgb(214, 239, 216);
+      }
+
+      .dark-mode h5 {
+        color: #bb86fc;
+      }
+
+      h5 a {
+        text-decoration: none;
+        color: rgb(26, 83, 25);
+        font-weight: 900;
+      }
+
+      .dark-mode h5 a {
+        color: #bb86fc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img src="logo.png" alt="Logo" />
+        </div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+          Toggle Dark Mode
+        </button>
+      </header>
+      <div class="home">
+        <div class="left">
+          <img src="left-image.png" alt="Image" />
+        </div>
+        <div class="right">
+          <h1>Sign Up</h1>
+          <form>
+            <div class="input-control">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" />
+            </div>
+            <div class="input-control">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div class="input-control">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" />
+            </div>
+            <div class="input-control">
+              <label for="confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+              />
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+          </form>
+          <h5>Already have an account? <a href="#">Login</a></h5>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+    </script>
+  </body>
+</html>

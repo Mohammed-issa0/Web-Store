@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="verification.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="verification.css" />
     <title>signup</title>
-</head>
+    <style>
+      a {
+        color: #fff;
+      }
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header #language-select {
+        color: #508d4e;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+      }
+      header #language-select:focus {
+        outline: none;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <span id="save-ar"></span>
     <div class="container">
-        <header>
-            <div class="logo"><img src="/images/logo.png" alt=""></div>
-        </header>
+      <header>
+        <div class="logo"><img src="/images/logo.png" alt="" /></div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+          Mode
+        </button>
+        <select id="language-select">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ar">عربي</option>
+        </select>
+      </header>
 
-        <section class="home">
+      <section class="home">
+        <div class="left scroll-left">
+          <img src="/images/52d45ed477f1f9fc5d32c6afde338fd4.jpeg" alt="" />
+        </div>
 
-            <div class="left scroll-left">
-                <img src="/images/52d45ed477f1f9fc5d32c6afde338fd4.jpeg" alt="">
-            </div>
-
-            <div class="right scroll-right">
-                <h1>Inter Code</h1>
-                <img src="/images/check.png" alt="" width="100px" height="auto">
-                <h3>The verification code has been sent to your email</h3>
-                <p id="email">*****@gmail.com</p>
-                <p id="sec">The code consists of 6 digits containing letters and numbers and is valid for 10 minutes.</p>
-                <form action="/">
-                    <input type="number">
-                    <input type="number">
-                    <input type="number">
-                    <input type="number">
-                    <input type="number">
-                    <input type="number">
-                </form>
-                <button>Verify</button>
-            </div>
-
-        </section>
+        <div class="right scroll-right">
+          <h1 data-lang="a">Inter Code</h1>
+          <img src="/images/check.png" alt="" width="100px" height="auto" />
+          <h3 data-lang="b">
+            The verification code has been sent to your email
+          </h3>
+          <p id="email">*****@gmail.com</p>
+          <p id="sec" data-lang="c">
+            The code consists of 6 digits containing letters and numbers and is
+            valid for 10 minutes.
+          </p>
+          <form action="/">
+            <input type="number" />
+            <input type="number" />
+            <input type="number" />
+            <input type="number" />
+            <input type="number" />
+            <input type="number" />
+          </form>
+          <button data-lang="verify">Verify</button>
+        </div>
+      </section>
     </div>
 
-
     <script src="verification.js"></script>
-</body>
-
+  </body>
 </html>

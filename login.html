@@ -1,61 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="login2.css">
-    <link rel="stylesheet" href="login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="login2.css" />
+    <link rel="stylesheet" href="login.css" />
     <title>login-page</title>
-</head>
-<body>
+    <style>
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header #language-select {
+        color: #508d4e;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+      }
+      header #language-select:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="save-ar"></span>
     <div class="container">
-        <header>
-            <div class="logo"><img src="/images/logo.png" alt=""></div>
-        </header>
-    
-        <section class="home">
-    
-            <div class="left scroll-right">
-                <img src="/images/52d45ed477f1f9fc5d32c6afde338fd4.jpeg" alt="">
-            </div>
-    
-            <div class="right scroll-left">
-                <div class="login">
-                    <h1>LOGIN</h1>
-                    <form id="form" action="/">
-                        <div class="input-control">
-                            <label for="email" class="lab">Email</label>
-                            <input type="email" name="email" id="email">
-                            <div class="error"></div>
-                        </div>
-                        
-                        <div class="input-control">
-                            <label for="number">Phone Number</label>
-                            <input type="number" name="number" id="number">
-                            <div class="error"></div>
-                        </div>
+      <header>
+        <div class="logo"><img src="/images/logo.png" alt="" /></div>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+          Mode
+        </button>
+        <select id="language-select">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ar">عربي</option>
+        </select>
+      </header>
 
-                        <div class="input-control">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password">
-                            <div class="error"></div>
-                        </div>
+      <section class="home">
+        <div class="left scroll-right">
+          <img src="/images/52d45ed477f1f9fc5d32c6afde338fd4.jpeg" alt="" />
+        </div>
 
-                        <input type="submit" value="login" class="btn">
-                        
-                        <div class="text">
-                            <h5>Forget Password</h5>
-                            <h5>don't have an account? <a href="signup.html"><span>signup</span></a> </h5>
-                        </div>
-                        
+        <div class="right scroll-left">
+          <div class="login">
+            <h1 data-lang="login">LOGIN</h1>
+            <form id="form" action="/">
+              <div class="input-control">
+                <label for="email" class="lab" data-lang="email">Email</label>
+                <input type="email" name="email" id="email" />
+                <div class="error"></div>
+              </div>
 
-                    </form>
-                </div>
-            </div>
-    
-        </section>
+              <div class="input-control">
+                <label for="number" data-lang="phoneNumber">Phone Number</label>
+                <input type="number" name="number" id="number" />
+                <div class="error"></div>
+              </div>
+
+              <div class="input-control">
+                <label for="password" data-lang="password">Password</label>
+                <input type="password" name="password" id="password" />
+                <div class="error"></div>
+              </div>
+
+              <button>
+                <a href="verification.html" data-lang="login">login</a>
+              </button>
+
+              <div class="text">
+                <h5 data-lang="forget">Forget Password</h5>
+                <h5>
+                  <span data-lang="dont"> don't have an account? </span>
+                  <a href="signup.html"
+                    ><span class="sss" data-lang="signup">signup</span></a
+                  >
+                </h5>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
